@@ -38,7 +38,7 @@ def checkWinner():
     btn3["text"]=="X" and btn5["text"]=="X" and btn7["text"]=="X"):
         
         winner=True
-        disableBtn()
+        disableButtons()
         messagebox.showinfo("TicTacToe","Spēlētājs X ir uzvarējis")
 
     elif(btn1["text"]=="O" and btn2["text"]=="O" and btn3["text"]=="O" or 
@@ -53,15 +53,15 @@ def checkWinner():
     btn3["text"]=="O" and btn5["text"]=="O" and btn7["text"]=="O"):
         
         winner=True
-        disableBtn()
+        disableButtons()
         messagebox.showinfo("TicTacToe","Spēlētājs O ir uzvarējis")
     
     elif count==9:
         winner = False
-        disableBtn()
+        disableButtons()
         messagebox.showinfo("TicTacToe", "Neizšķirts")
 
-def disableBtn():
+def disableButtons():
     btn1.config(state=DISABLED)
     btn2.config(state=DISABLED)
     btn3.config(state=DISABLED)
@@ -93,12 +93,6 @@ def reset():
     btn8["text"]=" "
     btn9["text"]=" "
 
-galvenaIzvelne=Menu(Logs)
-Logs.config(menu=galvenaIzvelne)
-opcijas=Menu(galvenaIzvelne,tearoff=False)
-galvenaIzvelne.add_cascade(label="Opcijas", menu="Opcijas")
-opcijas.add_command(label="jauna spēle", command = reset)
-opcijas.add_command(label="Iziet", command = Logs.quit)
 
 btn1=Button(Logs,text=" ",width=6,height=3,font=("Helvica",24),command=lambda:btnclick(btn1))
 btn2=Button(Logs,text=" ",width=6,height=3,font=("Helvica",24),command=lambda:btnclick(btn2))
@@ -122,6 +116,11 @@ btn7.grid(row=2, column=0)
 btn8.grid(row=2, column=1)
 btn9.grid(row=2, column=2)
 
-
+galvenaIzvelne=Menu(Logs)
+Logs.config(menu=galvenaIzvelne)
+opcijas=Menu(galvenaIzvelne,tearoff=False)
+galvenaIzvelne.add_cascade(label="Opcijas", menu=opcijas)
+opcijas.add_command(label="jauna spēle", command = reset)
+opcijas.add_command(label="Iziet", command = Logs.quit)
 
 Logs.mainloop()
