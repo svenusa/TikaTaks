@@ -60,7 +60,7 @@ def checkWinner():
         winner = False
         disableButtons()
         messagebox.showinfo("TicTacToe", "Neizšķirts")
-
+    return
 def disableButtons():
     btn1.config(state=DISABLED)
     btn2.config(state=DISABLED)
